@@ -1,4 +1,7 @@
 package com.SofkaU.DDDChallengue.traffic;
 
-public class Traffic {
+import co.com.sofka.domain.generic.AggregateEvent;
+import com.SofkaU.DDDChallengue.traffic.values.TrafficId;
+
+public class Traffic extends AggregateEvent<TrafficId> {
 }
