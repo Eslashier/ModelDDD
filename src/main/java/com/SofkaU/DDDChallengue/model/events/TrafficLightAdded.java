@@ -1,4 +1,4 @@
 package com.SofkaU.DDDChallengue.model.events;
 
-public class AddVerticalSignal {
+public class TrafficLightAdded {
 }

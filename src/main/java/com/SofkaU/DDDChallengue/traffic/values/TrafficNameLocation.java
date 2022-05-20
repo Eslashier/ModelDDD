@@ -1,14 +1,14 @@
-package com.SofkaU.DDDChallengue.model.values;
+package com.SofkaU.DDDChallengue.traffic.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class NameOfModel implements ValueObject<String> {
+public class TrafficNameLocation implements ValueObject<String> {
 
     private final String value;
 
-    public NameOfModel(String value){
+    public TrafficNameLocation(String value){
         this.value= Objects.requireNonNull(value);
         if(this.value.isBlank()){
             throw new IllegalArgumentException("The material cannot be empty");

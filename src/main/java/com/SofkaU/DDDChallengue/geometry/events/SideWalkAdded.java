@@ -1,4 +1,4 @@
 package com.SofkaU.DDDChallengue.geometry.events;
 
-public class UpdateSidewalkWide {
+public class SideWalkAdded {
 }

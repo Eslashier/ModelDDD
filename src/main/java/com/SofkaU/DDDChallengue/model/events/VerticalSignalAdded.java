@@ -1,4 +1,4 @@
 package com.SofkaU.DDDChallengue.model.events;
 
-public class UpdateDateOfModel {
+public class VerticalSignalAdded {
 }

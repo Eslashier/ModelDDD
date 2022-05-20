@@ -1,4 +1,4 @@
 package com.SofkaU.DDDChallengue.traffic.events;
 
-public class UpdateBusesQuantity {
+public class PrivateCarsAdded {
 }

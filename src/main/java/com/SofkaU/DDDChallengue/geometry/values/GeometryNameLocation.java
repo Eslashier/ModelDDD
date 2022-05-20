@@ -1,14 +1,14 @@
-package com.SofkaU.DDDChallengue.model.values;
+package com.SofkaU.DDDChallengue.geometry.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class NameOfModel implements ValueObject<String> {
+public class GeometryNameLocation implements ValueObject<String> {
 
     private final String value;
 
-    public NameOfModel(String value){
+    public GeometryNameLocation(String value){
         this.value= Objects.requireNonNull(value);
         if(this.value.isBlank()){
             throw new IllegalArgumentException("The material cannot be empty");

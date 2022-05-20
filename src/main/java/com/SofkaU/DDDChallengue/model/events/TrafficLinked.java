@@ -1,4 +1,4 @@
 package com.SofkaU.DDDChallengue.model.events;
 
-public class UpdateVerticalSignalGroup {
+public class TrafficLinked {
 }
