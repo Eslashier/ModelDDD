@@ -1,4 +1,17 @@
 package com.SofkaU.DDDChallengue.geometry.values;
 
-public class SidewalkId {
+import co.com.sofka.domain.generic.Identity;
+
+public class SidewalkId extends Identity {
+    public SidewalkId(){
+
+    }
+
+    private SidewalkId(String id){
+        super(id);
+    }
+
+    public static SidewalkId of(String id){
+        return new SidewalkId(id);
+    }
 }
