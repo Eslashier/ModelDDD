@@ -17,6 +17,4 @@ public class AddBusesUseCase extends UseCase<RequestCommand<AddBuses>, ResponseE
         emit().onResponse(new ResponseEvents(traffic.getUncommittedChanges()));
     }
 
-
-
 }

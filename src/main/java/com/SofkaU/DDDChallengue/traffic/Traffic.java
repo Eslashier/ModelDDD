@@ -46,8 +46,16 @@ public class Traffic extends AggregateEvent<TrafficId> {
         appendChange(new BusesAdded(entityId, quantity, timeOfData)).apply();
     }
 
+    public void updateTrafficNameLocation(TrafficNameLocation trafficNameLocation){
+        Objects.requireNonNull(trafficNameLocation);
+        appendChange(new TrafficNameLocationUpdated(trafficNameLocation)).apply();
+    }
     public void updateBusesQuantity(BusesId entityId, Quantity quantity){
         appendChange(new BusesQuantityUpdated(entityId, quantity)).apply();
+    }
+
+    public void updateBusesTimeOfData(BusesId entityId, TimeOfData timeOfData){
+        appendChange(new BusesTimeOfDataUpdated(entityId, timeOfData)).apply();
     }
     public void updatePrivateCarsQuantity(PrivateCarsId entityId, Quantity quantity){
         appendChange(new PrivateCarsQuantityUpdated(entityId, quantity)).apply();
