@@ -5,11 +5,11 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.SofkaU.DDDChallengue.geometry.values.GeometryId;
 import com.SofkaU.DDDChallengue.model.events.*;
 import com.SofkaU.DDDChallengue.model.values.*;
-import com.SofkaU.DDDChallengue.traffic.TrafficChange;
 import com.SofkaU.DDDChallengue.traffic.values.TrafficId;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Model extends AggregateEvent<ModelId> {
@@ -48,6 +48,52 @@ public class Model extends AggregateEvent<ModelId> {
         Objects.requireNonNull(signalGroup);
         Objects.requireNonNull(signalName);
         appendChange(new VerticalSignalAdded(entityId, signalGroup, signalName)).apply();
+    }
+
+    protected Optional<TrafficLight> getTrafficLightById(final TrafficLightId trafficLightId){
+        return trafficLights()
+                .stream()
+                .filter(light -> light.identity().equals(trafficLightId))
+                .findFirst();
+    }
+
+    protected Optional<VerticalSignal> getVerticalSignalById(final VerticalSignalId verticalSignalId){
+        return verticalSignals()
+                .stream()
+                .filter(signal -> signal.identity().equals(verticalSignalId))
+                .findFirst();
+    }
+    public void  updateNameOfModel(NameOfModel nameOfModel){
+        Objects.requireNonNull(nameOfModel);
+        appendChange(new NameOfModelUpdated(nameOfModel)).apply();
+    }
+    public void  updateDateOfModel(DateOfModel dateOfModel){
+        Objects.requireNonNull(dateOfModel);
+        appendChange(new DateOfModelUpdated(dateOfModel)).apply();
+    }
+
+    public void updateTrafficLightTimeGreen(TrafficLightId trafficLightId, TimeGreen timeGreen){
+        Objects.requireNonNull(trafficLightId);
+        Objects.requireNonNull(timeGreen);
+        appendChange(new TrafficLightTimeGreenUpdated(trafficLightId, timeGreen)).apply();
+    }
+
+    public void updateTrafficLightTimeRed(TrafficLightId trafficLightId, TimeRed timeRed){
+        Objects.requireNonNull(trafficLightId);
+        Objects.requireNonNull(timeRed);
+        appendChange(new TrafficLightTimeRedUpdated(trafficLightId, timeRed)).apply();
+    }
+
+    public void updateVerticalSignalGroup(VerticalSignalId verticalSignalId, SignalGroup signalGroup){
+        Objects.requireNonNull(verticalSignalId);
+        Objects.requireNonNull(signalGroup);
+        appendChange(new VerticalSignalGroupUpdated(verticalSignalId, signalGroup)).apply();
+    }
+
+    public void updateVerticalSignalName(VerticalSignalId verticalSignalId, SignalName signalName){
+        Objects.requireNonNull(verticalSignalId);
+        Objects.requireNonNull(signalName);
+        appendChange(new VerticalSignalNameUpdated(verticalSignalId, signalName)).apply();
     }
 
     public void geometryLinked(GeometryId geometryId){
