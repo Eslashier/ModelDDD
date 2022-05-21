@@ -8,12 +8,12 @@ public class ModelId extends Identity {
 
     }
 
-    private ModelId(String id){
-        super(id);
+    private ModelId(String uid){
+        super(uid);
     }
 
-    public static ModelId of(String id){
-        return new ModelId(id);
+    public static ModelId of(String uid){
+        return new ModelId(uid);
     }
 
 }

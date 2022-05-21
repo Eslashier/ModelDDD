@@ -8,12 +8,12 @@ public class BusesId extends Identity {
 
     }
 
-    private BusesId(String id){
-        super(id);
+    private BusesId(String uid){
+        super(uid);
     }
 
-    public static BusesId of(String id){
-        return new BusesId(id);
+    public static BusesId of(String uid){
+        return new BusesId(uid);
     }
 
 }

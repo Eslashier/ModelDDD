@@ -9,11 +9,11 @@ public class TrafficLightId extends Identity {
 
     }
 
-    private TrafficLightId(String id){
-        super(id);
+    private TrafficLightId(String uid){
+        super(uid);
     }
 
-    public static TrafficLightId of(String id){
-        return new TrafficLightId(id);
+    public static TrafficLightId of(String uid){
+        return new TrafficLightId(uid);
     }
 }

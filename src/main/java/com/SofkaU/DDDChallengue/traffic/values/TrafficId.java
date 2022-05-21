@@ -9,11 +9,11 @@ public class TrafficId extends Identity {
 
     }
 
-    private TrafficId(String id){
-        super(id);
+    private TrafficId(String uid){
+        super(uid);
     }
 
-    public static TrafficId of(String id){
-        return new TrafficId(id);
+    public static TrafficId of(String uid){
+        return new TrafficId(uid);
     }
 }

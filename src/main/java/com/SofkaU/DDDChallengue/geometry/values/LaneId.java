@@ -7,11 +7,11 @@ public class LaneId extends Identity {
 
     }
 
-    private LaneId(String id){
-        super(id);
+    private LaneId(String uid){
+        super(uid);
     }
 
-    public static LaneId of(String id){
-        return new LaneId(id);
+    public static LaneId of(String uid){
+        return new LaneId(uid);
     }
 }
