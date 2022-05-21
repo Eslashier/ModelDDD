@@ -23,11 +23,12 @@ public class PrivateCars extends Entity<PrivateCarsId> {
     public void updateTimeOfData(TimeOfData timeOfData){
         this.timeOfData = timeOfData;
     }
-    public Quantity Quantity() {
+
+    public Quantity getQuantity() {
         return quantity;
     }
 
-    public TimeOfData TimeOfData() {
+    public TimeOfData getTimeOfData() {
         return timeOfData;
     }
 }

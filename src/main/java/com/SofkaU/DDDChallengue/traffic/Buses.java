@@ -5,6 +5,8 @@ import com.SofkaU.DDDChallengue.traffic.values.BusesId;
 import com.SofkaU.DDDChallengue.traffic.values.Quantity;
 import com.SofkaU.DDDChallengue.traffic.values.TimeOfData;
 
+import java.util.Objects;
+
 public class Buses extends Entity<BusesId> {
 
     private Quantity quantity;
@@ -17,17 +19,17 @@ public class Buses extends Entity<BusesId> {
     }
 
     public void updateQuantity(Quantity quantity){
-        this.quantity = quantity;
+        this.quantity = Objects.requireNonNull(quantity);
     }
 
     public void updateTimeOfData(TimeOfData timeOfData){
-        this.timeOfData = timeOfData;
+        this.timeOfData = Objects.requireNonNull(timeOfData);
     }
-    public Quantity Quantity() {
+    public Quantity getQuantity() {
         return quantity;
     }
 
-    public TimeOfData TimeOfData() {
+    public TimeOfData getTimeOfData() {
         return timeOfData;
     }
 }
