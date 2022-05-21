@@ -1,11 +1,13 @@
 package com.SofkaU.DDDChallengue.traffic;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.SofkaU.DDDChallengue.traffic.events.BusesAdded;
 import com.SofkaU.DDDChallengue.traffic.events.PrivateCarsAdded;
 import com.SofkaU.DDDChallengue.traffic.events.TrafficCreated;
 import com.SofkaU.DDDChallengue.traffic.values.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,6 +25,13 @@ public class Traffic extends AggregateEvent<TrafficId> {
         super(entityId);
         subscribe(new TrafficChange(this));
     }
+
+    public static Traffic from(TrafficId trafficId, List<DomainEvent> events){
+        var traffic = new Traffic(trafficId);
+        events.forEach(traffic::applyEvent);
+        return traffic;
+    }
+
     public void addPrivateCars(PrivateCarsId entityId, Quantity quantity, TimeOfData timeOfData){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(quantity);

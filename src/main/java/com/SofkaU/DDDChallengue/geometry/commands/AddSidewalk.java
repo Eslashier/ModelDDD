@@ -1,4 +1,6 @@
 package com.SofkaU.DDDChallengue.geometry.commands;
 
-public class AddSidewalk {
+import co.com.sofka.domain.generic.Command;
+
+public class AddSidewalk extends Command {
 }

@@ -1,4 +1,6 @@
 package com.SofkaU.DDDChallengue.geometry.commands;
 
-public class UpdateNumberOfLines {
+import co.com.sofka.domain.generic.Command;
+
+public class UpdateNumberOfLines extends Command {
 }

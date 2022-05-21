@@ -1,11 +1,13 @@
 package com.SofkaU.DDDChallengue.geometry;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.SofkaU.DDDChallengue.geometry.events.GeometryCreated;
 import com.SofkaU.DDDChallengue.geometry.events.LanesAdded;
 import com.SofkaU.DDDChallengue.geometry.events.SideWalkAdded;
 import com.SofkaU.DDDChallengue.geometry.values.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,6 +25,12 @@ public class Geometry extends AggregateEvent<GeometryId> {
     private Geometry(GeometryId entityId){
         super(entityId);
         subscribe(new GeometryChange(this));
+    }
+
+    public static Geometry from(GeometryId geometryId, List<DomainEvent> events){
+        var geometry = new Geometry(geometryId);
+        events.forEach(geometry::applyEvent);
+        return geometry;
     }
     public void addLanes(LaneId entityId, LaneWide laneWide, NumberOfLanes numberOfLanes) {
         Objects.requireNonNull(entityId);

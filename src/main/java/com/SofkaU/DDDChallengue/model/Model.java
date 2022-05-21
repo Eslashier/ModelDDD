@@ -1,12 +1,14 @@
 package com.SofkaU.DDDChallengue.model;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.SofkaU.DDDChallengue.geometry.values.GeometryId;
 import com.SofkaU.DDDChallengue.model.events.*;
 import com.SofkaU.DDDChallengue.model.values.*;
 import com.SofkaU.DDDChallengue.traffic.TrafficChange;
 import com.SofkaU.DDDChallengue.traffic.values.TrafficId;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -29,6 +31,11 @@ public class Model extends AggregateEvent<ModelId> {
         subscribe(new ModelChange(this));
     }
 
+    public static Model from(ModelId modelId, List<DomainEvent> events){
+        var model = new Model(modelId);
+        events.forEach(model::applyEvent);
+        return model;
+    }
     public void addTrafficLight(TrafficLightId entityId, TimeGreen timeGreen, TimeRed timeRed){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(timeGreen);

@@ -1,4 +1,6 @@
 package com.SofkaU.DDDChallengue.model.commands;
 
-public class AddTrafficLight {
+import co.com.sofka.domain.generic.Command;
+
+public class AddTrafficLight extends Command {
 }

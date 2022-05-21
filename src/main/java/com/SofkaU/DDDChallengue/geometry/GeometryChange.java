@@ -20,7 +20,7 @@ public class GeometryChange extends EventChange {
         apply((LanesAdded event)->{
             var numLanes = geometry.lanes.size();
             if(numLanes>1){
-                throw new IllegalArgumentException("Cannot add mor than one lanes set");
+                throw new IllegalArgumentException("Cannot add more than one lanes set");
             }
             geometry.lanes.add(new Lanes(
                     event.getLaneId(),
@@ -32,7 +32,7 @@ public class GeometryChange extends EventChange {
         apply((SideWalkAdded event)->{
             var numSidewalks = geometry.lanes.size();
             if(numSidewalks>1){
-                throw new IllegalArgumentException("Cannot add mor than one sidewalks set");
+                throw new IllegalArgumentException("Cannot add more than one sidewalks set");
             }
             geometry.sidewalk.add(new Sidewalk(
                     event.getSidewalkId(),

@@ -1,4 +1,6 @@
 package com.SofkaU.DDDChallengue.geometry.commands;
 
-public class AddLanes {
+import co.com.sofka.domain.generic.Command;
+
+public class AddLanes extends Command {
 }
