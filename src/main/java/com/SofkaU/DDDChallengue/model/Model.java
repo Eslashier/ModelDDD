@@ -127,4 +127,14 @@ public class Model extends AggregateEvent<ModelId> {
     public GeometryId getGeometryId() {
         return geometryId;
     }
+
+    public void notifyGeometryDepartment(String message){
+        Objects.requireNonNull(message);
+        appendChange(new GeometryNotification(message)).apply();
+    }
+
+    public void notifyTrafficDepartment(String message){
+        Objects.requireNonNull(message);
+        appendChange(new TrafficNotification(message)).apply();
+    }
 }
