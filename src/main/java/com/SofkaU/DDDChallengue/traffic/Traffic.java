@@ -7,18 +7,23 @@ import com.SofkaU.DDDChallengue.traffic.events.TrafficCreated;
 import com.SofkaU.DDDChallengue.traffic.values.*;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Traffic extends AggregateEvent<TrafficId> {
 
     protected TrafficNameLocation trafficNameLocation;
-    protected BusesId busesId;
-    protected PrivateCarsId privateCarsId;
+    protected Set<Buses> buses;
+    protected Set<PrivateCars> privateCars;
 
     public Traffic(TrafficId entityId, TrafficNameLocation trafficNameLocation){
         super(entityId);
         appendChange(new TrafficCreated(trafficNameLocation)).apply();
     }
 
+    private Traffic(TrafficId entityId){
+        super(entityId);
+        subscribe(new TrafficChange(this));
+    }
     public void addPrivateCars(PrivateCarsId entityId, Quantity quantity, TimeOfData timeOfData){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(quantity);
@@ -38,11 +43,11 @@ public class Traffic extends AggregateEvent<TrafficId> {
         return trafficNameLocation;
     }
 
-    public BusesId busesId() {
-        return busesId;
+    public Set<Buses> buses() {
+        return buses;
     }
 
-    public PrivateCarsId privateCarsId() {
-        return privateCarsId;
+    public Set<PrivateCars> privateCars() {
+        return privateCars;
     }
 }

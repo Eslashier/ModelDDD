@@ -3,9 +3,7 @@ package com.SofkaU.DDDChallengue.geometry.events;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.SofkaU.DDDChallengue.geometry.values.LaneId;
 import com.SofkaU.DDDChallengue.geometry.values.LaneWide;
-import com.SofkaU.DDDChallengue.geometry.values.Material;
 import com.SofkaU.DDDChallengue.geometry.values.NumberOfLanes;
-import com.SofkaU.DDDChallengue.traffic.values.TimeOfData;
 
 public class LanesAdded extends DomainEvent {
 

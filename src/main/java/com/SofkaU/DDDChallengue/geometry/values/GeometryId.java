@@ -1,6 +1,7 @@
 package com.SofkaU.DDDChallengue.geometry.values;
 
 import co.com.sofka.domain.generic.Identity;
+import com.SofkaU.DDDChallengue.model.values.ModelId;
 
 public class GeometryId extends Identity {
     public GeometryId(){
@@ -14,5 +15,4 @@ public class GeometryId extends Identity {
     public static GeometryId of(String uid){
         return new GeometryId(uid);
     }
-
 }
