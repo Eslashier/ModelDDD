@@ -2,13 +2,12 @@ package com.SofkaU.DDDChallengue.traffic;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.SofkaU.DDDChallengue.traffic.events.BusesAdded;
-import com.SofkaU.DDDChallengue.traffic.events.PrivateCarsAdded;
-import com.SofkaU.DDDChallengue.traffic.events.TrafficCreated;
+import com.SofkaU.DDDChallengue.traffic.events.*;
 import com.SofkaU.DDDChallengue.traffic.values.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Traffic extends AggregateEvent<TrafficId> {
@@ -47,6 +46,26 @@ public class Traffic extends AggregateEvent<TrafficId> {
         appendChange(new BusesAdded(entityId, quantity, timeOfData)).apply();
     }
 
+    public void updateBusesQuantity(BusesId entityId, Quantity quantity){
+        appendChange(new BusesQuantityUpdated(entityId, quantity)).apply();
+    }
+    public void updatePrivateCarsQuantity(PrivateCarsId entityId, Quantity quantity){
+        appendChange(new PrivateCarsQuantityUpdated(entityId, quantity)).apply();
+    }
+
+    protected Optional<Buses> getBusesById(final BusesId busesId){
+        return buses()
+                .stream()
+                .filter(bus -> bus.identity().equals(busesId))
+                .findFirst();
+    }
+
+    protected Optional<PrivateCars> getPrivateCarsById(final PrivateCarsId privateCarsId){
+        return privateCars()
+                .stream()
+                .filter(bus -> bus.identity().equals(privateCarsId))
+                .findFirst();
+    }
     public TrafficNameLocation trafficNameLocation() {
         return trafficNameLocation;
     }

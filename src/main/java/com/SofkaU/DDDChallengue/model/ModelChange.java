@@ -16,13 +16,9 @@ public class ModelChange extends EventChange {
            model.verticalSignals = new HashSet<>();
         });
 
-        apply((TrafficLinked event) ->{
-            model.trafficId = event.getTrafficId();
-        });
+        apply((TrafficLinked event) -> model.trafficId = event.getTrafficId());
 
-        apply((GeometryLinked event) ->{
-            model.geometryId = event.getGeometryId();
-        });
+        apply((GeometryLinked event) -> model.geometryId = event.getGeometryId());
 
         apply((TrafficLightAdded event)->{
             var numTrafficLights = model.trafficLights.size();
