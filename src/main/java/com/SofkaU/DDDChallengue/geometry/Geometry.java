@@ -20,6 +20,10 @@ public class Geometry extends AggregateEvent<GeometryId> {
         appendChange(new GeometryCreated(geometryNameLocation)).apply();
     }
 
+    private Geometry(GeometryId entityId){
+        super(entityId);
+        subscribe(new GeometryChange(this));
+    }
     public void addLanes(LaneId entityId, LaneWide laneWide, NumberOfLanes numberOfLanes) {
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(laneWide);

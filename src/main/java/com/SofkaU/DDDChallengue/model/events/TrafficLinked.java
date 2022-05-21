@@ -12,7 +12,7 @@ public class TrafficLinked extends DomainEvent {
         this.trafficId = trafficId;
     }
 
-    public TrafficId getGeometryId() {
+    public TrafficId getTrafficId() {
         return trafficId;
     }
 

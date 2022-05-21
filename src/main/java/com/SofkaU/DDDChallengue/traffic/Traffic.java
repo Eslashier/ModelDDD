@@ -19,7 +19,6 @@ public class Traffic extends AggregateEvent<TrafficId> {
         super(entityId);
         appendChange(new TrafficCreated(trafficNameLocation)).apply();
     }
-
     private Traffic(TrafficId entityId){
         super(entityId);
         subscribe(new TrafficChange(this));

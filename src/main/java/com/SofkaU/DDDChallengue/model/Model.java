@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import com.SofkaU.DDDChallengue.geometry.values.GeometryId;
 import com.SofkaU.DDDChallengue.model.events.*;
 import com.SofkaU.DDDChallengue.model.values.*;
+import com.SofkaU.DDDChallengue.traffic.TrafficChange;
 import com.SofkaU.DDDChallengue.traffic.values.TrafficId;
 
 import java.util.Objects;
@@ -21,6 +22,11 @@ public class Model extends AggregateEvent<ModelId> {
     public Model(ModelId entityId, NameOfModel nameOfModel, DateOfModel dateOfModel){
         super(entityId);
         appendChange(new ModelCreated(nameOfModel, dateOfModel)).apply();
+    }
+
+    private Model(ModelId entityId){
+        super(entityId);
+        subscribe(new ModelChange(this));
     }
 
     public void addTrafficLight(TrafficLightId entityId, TimeGreen timeGreen, TimeRed timeRed){
