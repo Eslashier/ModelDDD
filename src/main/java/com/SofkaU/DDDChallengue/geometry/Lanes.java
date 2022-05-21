@@ -31,4 +31,5 @@ public class Lanes extends Entity<LaneId> {
     public LaneWide laneWide() {
         return laneWide;
     }
+
 }

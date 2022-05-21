@@ -1,9 +1,10 @@
 package com.SofkaU.DDDChallengue.geometry.commands;
 
+import co.com.sofka.domain.generic.Command;
 import com.SofkaU.DDDChallengue.geometry.values.GeometryId;
 import com.SofkaU.DDDChallengue.geometry.values.GeometryNameLocation;
 
-public class CreateGeometry {
+public class CreateGeometry extends Command {
     private final GeometryId geometryId;
     private final GeometryNameLocation geometryNameLocation;
 

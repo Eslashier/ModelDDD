@@ -1,9 +1,7 @@
 package com.SofkaU.DDDChallengue.geometry;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.SofkaU.DDDChallengue.geometry.events.GeometryCreated;
-import com.SofkaU.DDDChallengue.geometry.events.LanesAdded;
-import com.SofkaU.DDDChallengue.geometry.events.SideWalkAdded;
+import com.SofkaU.DDDChallengue.geometry.events.*;
 
 import java.util.HashSet;
 
@@ -14,7 +12,7 @@ public class GeometryChange extends EventChange {
         apply((GeometryCreated event)->{
             geometry.geometryNameLocation = event.getGeometryNameLocation();
             geometry.lanes = new HashSet<>();
-            geometry.sidewalk = new HashSet<>();
+            geometry.sidewalks = new HashSet<>();
         });
 
         apply((LanesAdded event)->{
@@ -34,11 +32,40 @@ public class GeometryChange extends EventChange {
             if(numSidewalks>1){
                 throw new IllegalArgumentException("Cannot add more than one sidewalks set");
             }
-            geometry.sidewalk.add(new Sidewalk(
+            geometry.sidewalks.add(new Sidewalk(
                     event.getSidewalkId(),
                     event.getWide(),
                     event.getMaterial()
             ));
         });
+
+        apply((GeometryNameLocationUpdated event)->{
+            geometry.geometryNameLocation = event.getGeometryNameLocation();
+        });
+
+        apply((LanesNumberUpdated event)->{
+            var lanes = geometry.getLanesById(event.getLaneId())
+                    .orElseThrow(()->new IllegalArgumentException("Set of lanes not found"));
+            lanes.updateNumberOfLanes(event.getNumberOfLanes());
+        });
+
+        apply((LaneWideUpdated event)->{
+            var lanes = geometry.getLanesById(event.getLaneId())
+                    .orElseThrow(()->new IllegalArgumentException("Set of lanes not found"));
+            lanes.updateLaneWide(event.getLaneWide());
+        });
+
+        apply((SidewalkMaterialUpdated event)->{
+            var sidewalk = geometry.getSidewalkById(event.getSidewalkId())
+                    .orElseThrow(()->new IllegalArgumentException("Set of sidewalks not found"));
+            sidewalk.updateMaterial(event.getMaterial());
+        });
+
+        apply((SidewalkWideUpdated event)->{
+            var sidewalk = geometry.getSidewalkById(event.getSidewalkId())
+                    .orElseThrow(()->new IllegalArgumentException("Set of sidewalks not found"));
+            sidewalk.updateWide(event.getWide());
+        });
+
     }
 }

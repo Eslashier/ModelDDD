@@ -17,7 +17,6 @@ public class Buses extends Entity<BusesId> {
         this.quantity = quantity;
         this.timeOfData = timeOfData;
     }
-
     public void updateQuantity(Quantity quantity){
         this.quantity = Objects.requireNonNull(quantity);
     }
