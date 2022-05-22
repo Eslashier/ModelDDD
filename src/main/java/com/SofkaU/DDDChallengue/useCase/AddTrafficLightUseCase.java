@@ -6,8 +6,7 @@ import co.com.sofka.business.support.ResponseEvents;
 import com.SofkaU.DDDChallengue.model.Model;
 import com.SofkaU.DDDChallengue.model.commands.AddTrafficLight;
 
-public class AddTrafficLightUseCase extends UseCase<RequestCommand<AddTrafficLight>, UseCase.ResponseValues> {
-
+public class AddTrafficLightUseCase extends UseCase<RequestCommand<AddTrafficLight>, ResponseEvents> {
     @Override
     public void executeUseCase(RequestCommand<AddTrafficLight> addTrafficLightRequestCommand){
         var command = addTrafficLightRequestCommand.getCommand();

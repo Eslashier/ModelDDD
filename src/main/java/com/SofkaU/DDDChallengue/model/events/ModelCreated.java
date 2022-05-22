@@ -15,6 +15,7 @@ public class ModelCreated extends DomainEvent {
         this.dateOfModel = dateOfModel;
     }
 
+
     public NameOfModel getNameOfModel() {
         return nameOfModel;
     }
@@ -22,4 +23,5 @@ public class ModelCreated extends DomainEvent {
     public DateOfModel getDateOfModel() {
         return dateOfModel;
     }
+
 }
