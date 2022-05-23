@@ -74,7 +74,7 @@ public class Traffic extends AggregateEvent<TrafficId> {
                 .filter(bus -> bus.identity().equals(privateCarsId))
                 .findFirst();
     }
-    public TrafficNameLocation trafficNameLocation() {
+    public TrafficNameLocation trafficNameLocation(TrafficNameLocation trafficNameLocation) {
         return trafficNameLocation;
     }
 
@@ -85,4 +85,5 @@ public class Traffic extends AggregateEvent<TrafficId> {
     public Set<PrivateCars> privateCars() {
         return privateCars;
     }
+
 }

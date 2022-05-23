@@ -42,23 +42,12 @@ public class TrafficChange extends EventChange {
             traffic.trafficNameLocation = event.getTrafficNameLocation();
         });
 
-        apply((BusesQuantityUpdated event)->{
-            var buses = traffic.getBusesById(event.getBusesId())
-                    .orElseThrow(()->new IllegalArgumentException("Set of buses not found"));
-            buses.updateQuantity(event.getQuantity());
-        });
-
         apply((BusesTimeOfDataUpdated event)->{
             var buses = traffic.getBusesById(event.getBusesId())
                     .orElseThrow(()->new IllegalArgumentException("Set of buses not found"));
             buses.updateTimeOfData(event.getTimeOfData());
         });
 
-        apply((PrivateCarsQuantityUpdated event)->{
-            var buses = traffic.getPrivateCarsById(event.getPrivateCarsId())
-                    .orElseThrow(()->new IllegalArgumentException("Set of private cars not found"));
-            buses.updateQuantity(event.getQuantity());
-        });
 
         apply((PrivateCarsTimeOfDataUpdated event)->{
             var buses = traffic.getPrivateCarsById(event.getPrivateCarsId())
